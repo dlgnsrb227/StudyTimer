@@ -4,10 +4,15 @@ import React, { useEffect } from "react";
 const Main = () => {
   useEffect(() => {
     const testclock = document.querySelector(".clock");
-    testclock.addEventListener("click", () => {
+    const testclick = () => {
       alert("test");
-    });
-  });
+    };
+    testclock.addEventListener("click", testclick);
+
+    return () => {
+      testclock.removeEventListener("click", testclick);
+    };
+  }, []);
   return (
     <>
       <div className="main">
