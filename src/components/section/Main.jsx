@@ -1,6 +1,13 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 
 const Main = () => {
+  useEffect(() => {
+    const testclock = document.querySelector(".clock");
+    testclock.addEventListener("click", () => {
+      alert("test");
+    });
+  });
   return (
     <>
       <div className="main">
@@ -28,7 +35,15 @@ const Main = () => {
             />
           </div>
         </div>
-        <div className="rightside"></div>
+        <div className="rightside">
+          <div className="musicplayer"></div>
+          <div className="todo">
+            <div className="todolist">
+              <div className="todolistcont"></div>
+            </div>
+            <div className="listachieve"></div>
+          </div>
+        </div>
       </div>
     </>
   );
