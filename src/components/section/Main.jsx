@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import { TimeStampMemo } from "../../assets/script/timestamp";
 
 const Main = () => {
   useEffect(() => {
@@ -11,7 +12,11 @@ const Main = () => {
       new Date().getHours() < 10
         ? `0${new Date().getHours()}`
         : new Date().getHours()
-    } : ${new Date().getMinutes()}`;
+    } : ${
+      new Date().getMinutes() < 10
+        ? `0${new Date().getMinutes()}`
+        : new Date().getMinutes()
+    }`;
     todayDate.innerHTML = `${new Date().getFullYear()}.${
       new Date().getMonth() + 1 < 10
         ? `0${new Date().getMonth() + 1}`
@@ -39,9 +44,13 @@ const Main = () => {
 
     const TimeInerval = setInterval(TimeUpdate, 1000);
 
+    // 실험용 alert
+    todayDate.addEventListener("click", TimeStampMemo);
+
     // 언마운트 될 때 인터벌 종료 시키기
     return () => {
       clearInterval(TimeInerval);
+      todayDate.removeEventListener("click", TimeStampMemo);
     };
   }, []);
   return (
