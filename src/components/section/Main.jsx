@@ -3,14 +3,45 @@ import React, { useEffect } from "react";
 
 const Main = () => {
   useEffect(() => {
-    const testclock = document.querySelector(".clock");
-    const testclick = () => {
-      alert("test");
-    };
-    testclock.addEventListener("click", testclick);
+    const Clock = document.querySelector(".clock");
+    const todayDate = document.querySelector(".date");
 
+    // 페이지 로딩 후에 현재 날짜 & 시간표시
+    Clock.innerHTML = `${
+      new Date().getHours() < 10
+        ? `0${new Date().getHours()}`
+        : new Date().getHours()
+    } : ${new Date().getMinutes()}`;
+    todayDate.innerHTML = `${new Date().getFullYear()}.${
+      new Date().getMonth() + 1 < 10
+        ? `0${new Date().getMonth() + 1}`
+        : new Date().getMonth() + 1
+    }.${
+      new Date().getDate() < 10
+        ? `0${new Date().getDate()}`
+        : new Date().getDate()
+    }`;
+
+    // 시간 업데이트 인터벌함수
+    const TimeUpdate = () => {
+      const Now = new Date();
+      const Hour = Now.getHours() < 10 ? `0${Now.getHours()}` : Now.getHours();
+      const Minutes =
+        Now.getMinutes() < 10 ? `0${Now.getMinutes()}` : Now.getMinutes();
+      const Month =
+        Now.getMonth() + 1 < 10 ? `0${Now.getMonth() + 1}` : Now.getMonth() + 1;
+      const Day = Now.getDate() < 10 ? `0${Now.getDate()}` : Now.getDate();
+
+      Clock.innerHTML = `${Hour} : ${Minutes}`;
+      todayDate.innerHTML = `${Now.getFullYear()}.${Month}.${Day}`;
+      console.log(`time check test`);
+    };
+
+    const TimeInerval = setInterval(TimeUpdate, 1000);
+
+    // 언마운트 될 때 인터벌 종료 시키기
     return () => {
-      testclock.removeEventListener("click", testclick);
+      clearInterval(TimeInerval);
     };
   }, []);
   return (
@@ -18,8 +49,8 @@ const Main = () => {
       <div className="main">
         <div className="leftside">
           <div className="mainclock whiteff">
-            <span className="date">2024.09.02</span>
-            <span className="clock">22 : 19</span>
+            <span className="date"></span>
+            <span className="clock"></span>
           </div>
           <div className="timestamp">
             <div className="timestampcont">
