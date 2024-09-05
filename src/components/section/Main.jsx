@@ -63,7 +63,7 @@ const Main = () => {
   const addTimestampMemo = () => {
     if (inputValue.trim()) {
       const currentTime = new Date();
-      const newMemo = `${
+      const newMemo = `(${
         currentTime.getHours() < 10
           ? `0${currentTime.getHours()}`
           : currentTime.getHours()
@@ -71,7 +71,7 @@ const Main = () => {
         currentTime.getMinutes() < 10
           ? `0${currentTime.getMinutes()}`
           : currentTime.getMinutes()
-      } 　${inputValue}`;
+      }) 　${inputValue}`;
 
       setTimestampMemo([...timestampMemo, newMemo]);
 
