@@ -15,7 +15,7 @@
       .clock {
         display: block;
         opacity: 75%;
-        font-size: 8vw;
+        font-size: 7.8vw;
         font-weight: 900;
       }
     }
@@ -29,11 +29,25 @@
       position: relative;
       .timestampcont {
         padding: 40px 30px;
+        height: 100%;
+        overflow-y: scroll;
         .timestampmemo {
           opacity: 80%;
           color: #fff;
           font-size: 1vw;
           line-height: 1.8;
+        }
+
+        &::-webkit-scrollbar {
+          width: 0.5vw;
+          background-color: #ffffff00;
+        }
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: #460a0a91;
+        }
+        &::-webkit-scrollbar-track {
+          background-color: #ffffff00;
         }
       }
 

@@ -43,7 +43,7 @@ const Main = () => {
 
       Clock.innerHTML = `${Hour} : ${Minutes}`;
       todayDate.innerHTML = `${Now.getFullYear()}.${Month}.${Day}`;
-      console.log(`time check test`);
+      // console.log(`time check test`);
     };
 
     const TimeInerval = setInterval(TimeUpdate, 1000);
@@ -74,6 +74,14 @@ const Main = () => {
       }) 　${inputValue}`;
 
       setTimestampMemo([...timestampMemo, newMemo]);
+
+      // test 용 console
+      console.log(document.querySelector(".timestampcont").scrollHeight);
+      console.log(document.querySelector(".timestampcont").scrollTop);
+      console.log(document.querySelector(".timestampcont").scrollHeight - 442);
+
+      document.querySelector(".timestampcont").scrollTop =
+        document.querySelector(".timestampcont").scrollHeight - 442;
 
       // input 초기화
       setInputValue("");
