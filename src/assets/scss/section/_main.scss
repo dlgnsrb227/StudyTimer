@@ -3,18 +3,18 @@
   justify-content: space-between;
   .leftside {
     width: 35%;
-    margin: 200px 0 0 300px;
+    margin: 100px 0 0 200px;
 
     .mainclock {
       line-height: 1;
       .date {
         opacity: 60%;
-        font-size: 2vw;
+        font-size: 1.5vw;
         font-weight: 700;
       }
       .clock {
         display: block;
-        opacity: 80%;
+        opacity: 75%;
         font-size: 8vw;
         font-weight: 900;
       }
@@ -56,7 +56,7 @@
     }
   }
   .rightside {
-    margin: 150px 200px 0 0;
+    margin: 55px 100px 0 0;
     width: 30%;
     height: 80vh;
     // background-color: #ffffff27;
