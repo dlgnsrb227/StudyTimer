@@ -1,7 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { getWeather } from "../../assets/scripts/weather";
 
 const Main = () => {
+  useEffect(() => {
+    getWeather();
+  }, []);
   // 텍스트 input 입력 상태
   const [inputValue, setInputValue] = useState("");
   // 타임스탬프 메모 저장 배열
@@ -109,15 +113,7 @@ const Main = () => {
                   {memo}
                 </p>
               ))}
-              {/* <p className="timestampmemo">
-                17 : 24 이 곳에 메모가 추가됩니다.
-              </p>
-              <p className="timestampmemo">
-                17 : 34 이 곳에 메모가 추가됩니다.
-              </p>
-              <p className="timestampmemo">
-                17 : 44 이 곳에 메모가 추가됩니다.
-              </p> */}
+              {/* <p className="timestampmemo">17 : 24 이 곳에 메모가 추가됩니다.</p> */}
             </div>
             <input
               type="text"
