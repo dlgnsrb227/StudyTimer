@@ -47,7 +47,7 @@ export function getWeather() {
 
   axios
     .get(
-      `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
+      `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
       {
         params: {
           serviceKey: apiKey,
