@@ -1,5 +1,8 @@
+import axios from "axios";
+
 export function getWeather() {
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY2;
+  const weatherBox = document.querySelector(".weatherbox");
   // 오늘 날짜 변수 설정
   let today = new Date();
 
@@ -39,24 +42,30 @@ export function getWeather() {
   }
   currentTime += minutes;
 
-  console.log(apiKey);
   console.log(todayString);
   console.log(currentTime);
 
-  //   axios.get(
-  //     `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`
-  //   ),
-  //     {
-  //       params: {
-  //         serviceKey:
-  //           "c3+MEDwd85mZm8WaBrFyJGbTeA3YNiR3uqoZ8KrOJ2TfAUZ4g+dr3aIe2f3zwmf18SaybK8HxSMVZAtZgK9XrQ==",
-  //         pageNo: 1,
-  //         numOfRows: 1000,
-  //         dataType: "JSON",
-  //         base_date: todayString,
-  //         base_time: currentTime,
-  //         nx: 58,
-  //         ny: 121,
-  //       },
-  //     };
+  axios
+    .get(
+      `http://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
+      {
+        params: {
+          serviceKey: apiKey,
+          pageNo: 1,
+          numOfRows: 1000,
+          dataType: "JSON",
+          base_date: todayString,
+          base_time: currentTime,
+          nx: 58,
+          ny: 121,
+        },
+      }
+    )
+    .then(function (response) {
+      let weatherInfo = response.data.response.body.items.item;
+
+      console.log(weatherInfo);
+
+      weatherBox.innerHTML = `현재 기온은 ${weatherInfo[3].obsrValue}℃입니다.`;
+    });
 }

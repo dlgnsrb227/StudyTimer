@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+// import axios from "axios";
 import { getWeather } from "../../assets/scripts/weather";
 
 const Main = () => {
@@ -134,6 +135,7 @@ const Main = () => {
             <div className="listachieve"></div>
           </div>
         </div>
+        <div className="weatherbox"></div>
       </div>
     </>
   );
