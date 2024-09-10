@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import { getWeather } from "../../assets/scripts/weather";
+import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
 
 const Main = () => {
   useEffect(() => {
@@ -135,7 +136,12 @@ const Main = () => {
             <div className="listachieve"></div>
           </div>
         </div>
-        <div className="weatherbox"></div>
+        <div className="weatherbox">
+          <div className="weathericon">
+            <img src={weatherIcon0} alt="날씨아이콘" />
+          </div>
+          <span className="temperature"></span>
+        </div>
       </div>
     </>
   );

@@ -101,10 +101,30 @@
   }
   .weatherbox {
     position: absolute;
-    right: 5.2%;
-    bottom: 5%;
+    right: 80px;
+    bottom: 3%;
     width: 100px;
     height: 100px;
-    background-color: #fff;
+    color: #fff;
+    text-align: center;
+    font-size: 1vw;
+    // background-color: #fff;
+
+    .weathericon {
+      // background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      img {
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+    .temperature {
+      display: block;
+      margin-top: 5px;
+    }
   }
 }

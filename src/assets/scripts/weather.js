@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getWeather() {
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY2;
-  const weatherBox = document.querySelector(".weatherbox");
+  const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
 
@@ -62,10 +62,12 @@ export function getWeather() {
       }
     )
     .then(function (response) {
-      let weatherInfo = response.data.response.body.items.item;
+      if (response && response.data.response.body) {
+        let weatherInfo = response.data.response.body.items.item;
 
-      console.log(weatherInfo);
+        console.log(weatherInfo);
 
-      weatherBox.innerHTML = `현재 기온은 ${weatherInfo[3].obsrValue}℃입니다.`;
+        temperature.innerHTML = `${weatherInfo[3].obsrValue}℃`;
+      }
     });
 }
