@@ -1,7 +1,8 @@
 import axios from "axios";
 
 export async function getWeather() {
-  const apiKey = process.env.REACT_APP_WEATHER_API_KEY2;
+  const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
+  const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
   // const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
@@ -50,7 +51,7 @@ export async function getWeather() {
       `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
       {
         params: {
-          serviceKey: apiKey,
+          serviceKey: apiKey1,
           pageNo: 1,
           numOfRows: 1000,
           dataType: "JSON",
