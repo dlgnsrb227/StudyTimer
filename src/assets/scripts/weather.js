@@ -2,7 +2,7 @@ import axios from "axios";
 
 export async function getWeather() {
   const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
-  const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
+  // const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
   // const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
@@ -66,7 +66,7 @@ export async function getWeather() {
     console.log(response);
     console.log(response.data.response.body);
 
-    if (response && response.data.response.body.items.item) {
+    if (response && response.data.response.body) {
       const weatherInfo = response.data.response.body.items.item;
       return weatherInfo;
 
