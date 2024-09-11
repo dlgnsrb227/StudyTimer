@@ -5,8 +5,20 @@ import { getWeather } from "../../assets/scripts/weather";
 import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
 
 const Main = () => {
+  // temperature 상태관리 통해 기온 나타내기
+  const [temperature, setTemperature] = useState("Loading...");
   useEffect(() => {
-    getWeather();
+    const fetchWeather = async () => {
+      try {
+        // getWeather함수에서 weatherInfo 반환값으로 받아옴
+        const weatherInfo = await getWeather();
+        setTemperature(`${weatherInfo[3].obsrValue} ℃`);
+      } catch (error) {
+        setTemperature(`Error`);
+      }
+    };
+
+    fetchWeather();
   }, []);
   // 텍스트 input 입력 상태
   const [inputValue, setInputValue] = useState("");
@@ -140,7 +152,7 @@ const Main = () => {
           <div className="weathericon">
             <img src={weatherIcon0} alt="날씨아이콘" />
           </div>
-          <span className="temperature"></span>
+          <span className="temperature">{temperature}</span>
         </div>
       </div>
     </>

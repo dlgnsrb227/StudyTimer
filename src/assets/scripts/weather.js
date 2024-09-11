@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export function getWeather() {
+export async function getWeather() {
   const apiKey = process.env.REACT_APP_WEATHER_API_KEY2;
-  const temperature = document.querySelector(".temperature");
+  // const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
 
@@ -45,8 +45,8 @@ export function getWeather() {
   console.log(todayString);
   console.log(currentTime);
 
-  axios
-    .get(
+  try {
+    const response = await axios.get(
       `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
       {
         params: {
@@ -60,14 +60,20 @@ export function getWeather() {
           ny: 121,
         },
       }
-    )
-    .then(function (response) {
-      if (response && response.data.response.body) {
-        let weatherInfo = response.data.response.body.items.item;
+    );
 
-        console.log(weatherInfo);
+    if (response && response.data.response.body) {
+      const weatherInfo = response.data.response.body.items.item;
+      return weatherInfo;
 
-        temperature.innerHTML = `${weatherInfo[3].obsrValue}℃`;
-      }
-    });
+      // console.log(weatherInfo);
+
+      // temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;
+    } else {
+      throw new Error("No Weather Data");
+    }
+  } catch (error) {
+    console.error("Error fetching weather data", error);
+    throw error;
+  }
 }
