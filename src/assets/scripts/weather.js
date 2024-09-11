@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export async function getWeather() {
-  const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
-  // const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
+  // const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
+  const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
   // const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
@@ -43,15 +43,15 @@ export async function getWeather() {
   }
   currentTime += minutes;
 
-  console.log(todayString);
-  console.log(currentTime);
+  // console.log(todayString);
+  // console.log(currentTime);
 
   try {
     const response = await axios.get(
       `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getUltraSrtNcst`,
       {
         params: {
-          serviceKey: apiKey1,
+          serviceKey: apiKey2,
           pageNo: 1,
           numOfRows: 1000,
           dataType: "JSON",
@@ -63,14 +63,14 @@ export async function getWeather() {
       }
     );
 
-    console.log(response);
-    console.log(response.data.response.body);
+    // console.log(response);
+    // console.log(response.data.response.body);
 
     if (response && response.data.response.body) {
       const weatherInfo = response.data.response.body.items.item;
+      console.log(`${todayString} ${currentTime}의 날씨정보`);
+      console.log(weatherInfo);
       return weatherInfo;
-
-      // console.log(weatherInfo);
 
       // temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;
     } else {
