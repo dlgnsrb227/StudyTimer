@@ -1,6 +1,13 @@
 import axios from "axios";
+import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
+import weatherIcon0Night from "../../assets/images/icon/weather_icon0_night.png";
+import weatherIcon1 from "../../assets/images/icon/weather_icon1.png";
+import weatherIcon2 from "../../assets/images/icon/weather_icon2.png";
+import weatherIcon3 from "../../assets/images/icon/weather_icon3.png";
 
 export async function getWeather() {
+  // 아이콘 이미지
+  const weatherIcon = document.querySelector(".weathericonimg");
   // const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
   const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
   // const temperature = document.querySelector(".temperature");
@@ -70,6 +77,31 @@ export async function getWeather() {
       const weatherInfo = response.data.response.body.items.item;
       console.log(`${todayString} ${currentTime}의 날씨정보`);
       console.log(weatherInfo);
+
+      // 날씨 아이콘 변경
+      if (weatherInfo[0].obsrValue === "0") {
+        if (hours >= 18 || hours <= 5) {
+          weatherIcon.src = weatherIcon0Night;
+        } else {
+          weatherIcon.src = weatherIcon0;
+        }
+      } else if (
+        weatherInfo[0].obsrValue === "1" ||
+        weatherInfo[0].obsrValue === "5"
+      ) {
+        weatherIcon.src = weatherIcon1;
+      } else if (
+        weatherInfo[0].obsrValue === "2" ||
+        weatherInfo[0].obsrValue === "6"
+      ) {
+        weatherIcon.src = weatherIcon2;
+      } else if (
+        weatherInfo[0].obsrValue === "3" ||
+        weatherInfo[0].obsrValue === "7"
+      ) {
+        weatherIcon.src = weatherIcon3;
+      }
+
       return weatherInfo;
 
       // temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;

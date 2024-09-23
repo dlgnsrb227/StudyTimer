@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import { getWeather } from "../../assets/scripts/weather";
-import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
-import weatherIcon0Night from "../../assets/images/icon/weather_icon0_night.png";
-import weatherIcon1 from "../../assets/images/icon/weather_icon1.png";
-import weatherIcon2 from "../../assets/images/icon/weather_icon2.png";
-import weatherIcon3 from "../../assets/images/icon/weather_icon3.png";
+// import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
+// import weatherIcon0Night from "../../assets/images/icon/weather_icon0_night.png";
+// import weatherIcon1 from "../../assets/images/icon/weather_icon1.png";
+// import weatherIcon2 from "../../assets/images/icon/weather_icon2.png";
+// import weatherIcon3 from "../../assets/images/icon/weather_icon3.png";
 
 const Main = () => {
   // temperature 상태관리 통해 기온 나타내기
@@ -59,13 +59,13 @@ const Main = () => {
       const Hour = Now.getHours() < 10 ? `0${Now.getHours()}` : Now.getHours();
       const Minutes =
         Now.getMinutes() < 10 ? `0${Now.getMinutes()}` : Now.getMinutes();
-      const Second =
-        Now.getSeconds() < 10 ? `0${Now.getSeconds()}` : Now.getSeconds();
+      // const Second =
+      //   Now.getSeconds() < 10 ? `0${Now.getSeconds()}` : Now.getSeconds();
       const Month =
         Now.getMonth() + 1 < 10 ? `0${Now.getMonth() + 1}` : Now.getMonth() + 1;
       const Day = Now.getDate() < 10 ? `0${Now.getDate()}` : Now.getDate();
 
-      if (Minutes == "00" && Second == "00") {
+      if (Now.getMinutes() === 0 && Now.getSeconds() === 0) {
         console.log("날씨정보가 갱신되었습니다.");
         getWeather();
       }
@@ -161,11 +161,7 @@ const Main = () => {
         </div>
         <div className="weatherbox">
           <div className="weathericon">
-            <img
-              className="weathericonimg"
-              src={weatherIcon0}
-              alt="날씨아이콘"
-            />
+            <img className="weathericonimg" src="" alt="날씨아이콘" />
           </div>
           <span className="temperature">{temperature}</span>
         </div>
