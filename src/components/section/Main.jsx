@@ -2,11 +2,7 @@
 import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import { getWeather } from "../../assets/scripts/weather";
-// import weatherIcon0 from "../../assets/images/icon/weather_icon0.png";
-// import weatherIcon0Night from "../../assets/images/icon/weather_icon0_night.png";
-// import weatherIcon1 from "../../assets/images/icon/weather_icon1.png";
-// import weatherIcon2 from "../../assets/images/icon/weather_icon2.png";
-// import weatherIcon3 from "../../assets/images/icon/weather_icon3.png";
+// import { Todolist } from "../../assets/scripts/todolist";
 
 const Main = () => {
   // temperature 상태관리 통해 기온 나타내기
@@ -65,7 +61,7 @@ const Main = () => {
         Now.getMonth() + 1 < 10 ? `0${Now.getMonth() + 1}` : Now.getMonth() + 1;
       const Day = Now.getDate() < 10 ? `0${Now.getDate()}` : Now.getDate();
 
-      if (Now.getMinutes() === 0 && Now.getSeconds() === 0) {
+      if (Now.getMinutes() === 10 && Now.getSeconds() === 0) {
         console.log("날씨정보가 갱신되었습니다.");
         getWeather();
       }
@@ -154,7 +150,34 @@ const Main = () => {
           <div className="musicplayer"></div>
           <div className="todo">
             <div className="todolist">
-              <div className="todolistcont"></div>
+              <div className="todolistcont">
+                <ul className="todolistbox">
+                  <li className="todocheck">
+                    <input type="checkbox" name="todocheck" id="todocheck" />
+                    <span className="listcontents">
+                      여기에 할 일 목록이 추가됩니다.
+                    </span>
+                  </li>
+                  <li className="todocheck">
+                    <input type="checkbox" name="todocheck" id="todocheck" />
+                    <span className="listcontents">
+                      여기에 할 일 목록이 추가됩니다.
+                    </span>
+                  </li>
+                  <li className="todocheck">
+                    <input type="checkbox" name="todocheck" id="todocheck" />
+                    <span className="listcontents">
+                      여기에 할 일 목록이 추가됩니다.
+                    </span>
+                  </li>
+                  <li className="todocheck">
+                    <input type="checkbox" name="todocheck" id="todocheck" />
+                    <span className="listcontents">
+                      여기에 할 일 목록이 추가됩니다.
+                    </span>
+                  </li>
+                </ul>
+              </div>
             </div>
             <div className="listachieve"></div>
           </div>

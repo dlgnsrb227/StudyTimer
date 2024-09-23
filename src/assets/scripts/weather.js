@@ -43,14 +43,26 @@ export async function getWeather() {
   if (hours < 10) {
     currentTime += "0";
   }
-  currentTime += hours;
+
+  // 정각 데이터가 매 시 10분에 api 제공이므로 10분 전에는 전 시간 데이터 호출
+  if (hours === 0 && minutes < 10) {
+    // 00시 10분 전이면 전날 23시 데이터 호출
+    hours = 23;
+    currentTime += hours;
+  } else if (minutes < 10) {
+    // 00시를 제외한 나머지 10분 전이면 전 시간의 데이터 호출
+    currentTime += hours - 1;
+  } else {
+    // 매 시 10분 이후에는 현재 시간의 데이터 호출
+    currentTime += hours;
+  }
+
   // 한 자릿수의 분일 때 0추가
   if (minutes < 10) {
     currentTime += "0";
   }
   currentTime += minutes;
 
-  // console.log(todayString);
   // console.log(currentTime);
 
   try {
@@ -75,7 +87,9 @@ export async function getWeather() {
 
     if (response && response.data.response.body) {
       const weatherInfo = response.data.response.body.items.item;
-      console.log(`${todayString} ${currentTime}의 날씨정보`);
+      console.log(
+        `날짜 : ${todayString} 시간 : ${currentTime}에 대한 날씨 호출 정보입니다.`
+      );
       console.log(weatherInfo);
 
       // 날씨 아이콘 변경
