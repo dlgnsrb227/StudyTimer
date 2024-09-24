@@ -10,7 +10,7 @@ export async function getWeather() {
   const weatherIcon = document.querySelector(".weathericonimg");
   // const apiKey1 = process.env.REACT_APP_WEATHER_API_KEY1;
   const apiKey2 = process.env.REACT_APP_WEATHER_API_KEY2;
-  // const temperature = document.querySelector(".temperature");
+  const temperature = document.querySelector(".temperature");
   // 오늘 날짜 변수 설정
   let today = new Date();
 
@@ -116,9 +116,8 @@ export async function getWeather() {
         weatherIcon.src = weatherIcon3;
       }
 
+      temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;
       return weatherInfo;
-
-      // temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;
     } else {
       throw new Error("No Weather Data");
     }

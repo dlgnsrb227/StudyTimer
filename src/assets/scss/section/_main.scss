@@ -91,11 +91,80 @@
       background-color: #ffffff15;
       border-radius: 15px;
       .todolist {
+        width: 100%;
+        height: 85%;
         .todolistcont {
+          padding: 20px;
+          ul {
+            li {
+              line-height: 2vw;
+              display: flex;
+              align-items: center;
+
+              input[type="checkbox"] {
+                appearance: none;
+                width: 1vw;
+                height: 1vw;
+                background-color: #fff;
+                margin-right: 10px;
+                border-radius: 3px;
+
+                &:checked {
+                  position: relative;
+
+                  &::before {
+                    content: "";
+                    width: 0.8vw;
+                    height: 0.8vw;
+                    background-image: url(../../images/icon/check.png);
+                    background-size: contain;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  }
+                }
+              }
+              .listcontents {
+                width: 90%;
+                font-size: 0.9vw;
+                color: #eeeeee;
+              }
+            }
+          }
         }
       }
 
       .listachieve {
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .achieveper {
+          display: block;
+          width: 85%;
+          text-align: right;
+          color: #eeeeee;
+          font-size: 1vw;
+        }
+
+        input {
+          border: none;
+          opacity: 60%;
+          border-radius: 10px;
+          width: 95%;
+          height: 40px;
+          font-size: 1vw;
+          padding-left: 10px;
+          &::placeholder {
+            text-align: center;
+            color: #000000;
+          }
+        }
       }
     }
   }

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 // import axios from "axios";
 import { getWeather } from "../../assets/scripts/weather";
 // import { Todolist } from "../../assets/scripts/todolist";
+import LoadingIcon from "../../assets/images/icon/loading.png";
 
 const Main = () => {
   // temperature 상태관리 통해 기온 나타내기
@@ -20,10 +21,6 @@ const Main = () => {
 
     fetchWeather();
   }, []);
-  // 텍스트 input 입력 상태
-  const [inputValue, setInputValue] = useState("");
-  // 타임스탬프 메모 저장 배열
-  const [timestampMemo, setTimestampMemo] = useState([]);
 
   useEffect(() => {
     const Clock = document.querySelector(".clock");
@@ -63,6 +60,7 @@ const Main = () => {
 
       if (Now.getMinutes() === 10 && Now.getSeconds() === 0) {
         console.log("날씨정보가 갱신되었습니다.");
+
         getWeather();
       }
 
@@ -78,6 +76,11 @@ const Main = () => {
       clearInterval(TimeInerval);
     };
   }, []);
+
+  // 텍스트 input 입력 상태
+  const [inputValue, setInputValue] = useState("");
+  // 타임스탬프 메모 저장 배열
+  const [timestampMemo, setTimestampMemo] = useState([]);
 
   // input 변경시 상태 업데이트
   const handleInputChange = (e) => {
@@ -100,10 +103,10 @@ const Main = () => {
 
       setTimestampMemo([...timestampMemo, newMemo]);
 
-      // test 용 console
-      console.log(document.querySelector(".timestampcont").scrollHeight);
-      console.log(document.querySelector(".timestampcont").scrollTop);
-      console.log(document.querySelector(".timestampcont").scrollHeight - 442);
+      // // test 용 console
+      // console.log(document.querySelector(".timestampcont").scrollHeight);
+      // console.log(document.querySelector(".timestampcont").scrollTop);
+      // console.log(document.querySelector(".timestampcont").scrollHeight - 442);
 
       document.querySelector(".timestampcont").scrollTop =
         document.querySelector(".timestampcont").scrollHeight - 442;
@@ -155,7 +158,8 @@ const Main = () => {
                   <li className="todocheck">
                     <input type="checkbox" name="todocheck" id="todocheck" />
                     <span className="listcontents">
-                      여기에 할 일 목록이 추가됩니다.
+                      여기에 할 일 목록이 추가됩니다. 내용이 길어지면 내용이
+                      길어지면 내용이 길어지면
                     </span>
                   </li>
                   <li className="todocheck">
@@ -179,12 +183,19 @@ const Main = () => {
                 </ul>
               </div>
             </div>
-            <div className="listachieve"></div>
+            <div className="listachieve">
+              <span className="achieveper">7/10</span>
+              <input type="text" placeholder="체크리스트 추가내용" />
+            </div>
           </div>
         </div>
         <div className="weatherbox">
           <div className="weathericon">
-            <img className="weathericonimg" src="" alt="날씨아이콘" />
+            <img
+              className="weathericonimg"
+              src={LoadingIcon}
+              alt="날씨아이콘"
+            />
           </div>
           <span className="temperature">{temperature}</span>
         </div>
