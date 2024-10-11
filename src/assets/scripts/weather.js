@@ -117,6 +117,7 @@ export async function getWeather() {
       }
 
       temperature.innerHTML = `${weatherInfo[3].obsrValue} ℃`;
+
       return weatherInfo;
     } else {
       throw new Error("No Weather Data");
