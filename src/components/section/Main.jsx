@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { getWeather } from "../../assets/scripts/weather";
 // import { Todolist } from "../../assets/scripts/todolist";
 import LoadingIcon from "../../assets/images/icon/loading.png";
+import TodoList from "./TodoList";
 
 const Main = () => {
   // temperature 상태관리 통해 기온 나타내기
@@ -152,7 +153,8 @@ const Main = () => {
         <div className="rightside">
           <div className="musicplayer"></div>
           <div className="todo">
-            <div className="todolist">
+            <TodoList></TodoList>
+            {/* <div className="todolist">
               <div className="todolistcont">
                 <ul className="todolistbox">
                   <li className="todocheck">
@@ -186,7 +188,7 @@ const Main = () => {
             <div className="listachieve">
               <span className="achieveper">7/10</span>
               <input type="text" placeholder="체크리스트 추가내용" />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="weatherbox">

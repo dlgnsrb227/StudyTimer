@@ -93,7 +93,7 @@
       border-radius: 15px;
       .todolist {
         width: 100%;
-        height: 85%;
+        height: 80%;
         .todolistcont {
           padding: 20px;
           ul {
@@ -101,7 +101,6 @@
               line-height: 2vw;
               display: flex;
               align-items: center;
-
               input[type="checkbox"] {
                 appearance: none;
                 width: 1vw;
@@ -132,6 +131,11 @@
                 width: 90%;
                 font-size: 0.9vw;
                 color: #eeeeee;
+
+                &.complete {
+                  color: #ffffff85;
+                  text-decoration: line-through;
+                }
               }
             }
           }
@@ -140,7 +144,7 @@
 
       .listachieve {
         width: 100%;
-        height: 15%;
+        height: 20%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -158,13 +162,22 @@
           opacity: 60%;
           border-radius: 10px;
           width: 95%;
-          height: 40px;
+          height: 2.5vw;
           font-size: 1vw;
           padding-left: 10px;
           &::placeholder {
             text-align: center;
             color: #000000;
           }
+        }
+
+        button {
+          border: none;
+          opacity: 80%;
+          border-radius: 10px;
+          width: 30%;
+          height: 2vw;
+          font-size: 1vw;
         }
       }
     }
