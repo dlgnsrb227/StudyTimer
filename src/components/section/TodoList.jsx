@@ -16,6 +16,7 @@ const TodoList = () => {
   const handleAddTodo = () => {
     if (newTodo.trim()) {
       setTodoList([...todoList, { text: newTodo, checked: false }]);
+
       setNewTodo("");
     }
   };
@@ -23,6 +24,7 @@ const TodoList = () => {
   return (
     <>
       <div className="todolist">
+        <h2 className="listhead">Today's Todo</h2>
         <div className="todolistcont">
           <ul className="todolistbox">
             {todoList.map((item, index) => (
