@@ -82,8 +82,8 @@ export async function getWeather() {
       }
     );
 
-    console.log(`response : ${response}`);
-    console.log(`body : ${response.data.response.body}`);
+    console.log(response);
+    console.log(response.data.response.body);
 
     if (response && response.data.response.body) {
       const weatherInfo = response.data.response.body.items.item;
