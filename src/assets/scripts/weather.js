@@ -76,8 +76,8 @@ export async function getWeather() {
           dataType: "JSON",
           base_date: todayString,
           base_time: currentTime,
-          nx: 58,
-          ny: 121,
+          nx: 61,
+          ny: 126,
         },
       }
     );
