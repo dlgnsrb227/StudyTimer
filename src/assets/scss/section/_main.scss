@@ -146,6 +146,33 @@
                   color: #ffffff85;
                   text-decoration: line-through;
                 }
+
+                .removeTodo {
+                  all: unset;
+                }
+
+                &:hover {
+                  color: #eeeeee33;
+                  background-color: #00000088;
+                  position: relative;
+                  transition: all 0.3s;
+
+                  .removeTodo {
+                    position: absolute;
+                    right: 55%;
+                    top: 15%;
+                    &::before {
+                      content: "";
+                      width: 1.2vw;
+                      height: 1.2vw;
+                      background-image: url(../../images/icon/remove.png);
+                      background-size: contain;
+                      background-repeat: no-repeat;
+                      position: absolute;
+                      cursor: pointer;
+                    }
+                  }
+                }
               }
             }
           }

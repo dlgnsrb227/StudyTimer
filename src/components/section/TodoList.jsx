@@ -1,10 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const TodoList = () => {
+  // local storage에서 데이터 불러오기
+  const getLocalTodo = () => {
+    const localTodoList = localStorage.getItem("todoList");
+    return localTodoList ? JSON.parse(localTodoList) : [];
+  };
+  // useEffect(() => {
+  //   const localTodoList = localStorage.getItem("todoList");
+  //   if (localTodoList) {
+  //     setTodoList(JSON.parse(localTodoList));
+  //   }
+  // }, []);
+
   // 할 일 목록 & 체크 상태 관리
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState(getLocalTodo);
   const [newTodo, setNewTodo] = useState("");
+
+  // todoList 변경 시, local storage에 저장
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(todoList));
+  }, [todoList]);
 
   const handleCheckboxChange = (index) => (event) => {
     const updateTodoList = todoList.map((item, i) =>
@@ -13,12 +30,19 @@ const TodoList = () => {
     setTodoList(updateTodoList);
   };
 
+  // list 추가
   const handleAddTodo = () => {
     if (newTodo.trim()) {
       setTodoList([...todoList, { text: newTodo, checked: false }]);
 
       setNewTodo("");
     }
+  };
+
+  // list 삭제
+  const handleDeleteTodo = (index) => {
+    const updateTodoList = todoList.filter((_, i) => i !== index);
+    setTodoList(updateTodoList);
   };
 
   return (
@@ -39,6 +63,10 @@ const TodoList = () => {
                   className={`listcontents ${item.checked ? "complete" : ""}`}
                 >
                   {item.text}
+                  <button
+                    className="removeTodo"
+                    onClick={() => handleDeleteTodo(index)}
+                  ></button>
                 </span>
               </li>
             ))}
