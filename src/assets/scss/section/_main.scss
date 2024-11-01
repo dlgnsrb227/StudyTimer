@@ -226,6 +226,12 @@
           width: 30%;
           height: 2vw;
           font-size: 1vw;
+
+          &:hover {
+            cursor: pointer;
+            transition: all 0.2s;
+            opacity: 100;
+          }
         }
       }
     }
